@@ -1,4 +1,4 @@
-package functionTest;
+package chapter3.functionInterfaceTest;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -109,6 +109,12 @@ public class Main {
 		};
 		
 		System.out.println(supplierTest.get());
+		System.out.println("----------------------------");
+		System.out.println("■Consumerインターフェース");
+		System.out.println("・メソッド参照");
+		
+		Consumer<String> cons = System.out::println;
+		cons.accept("tester");
 
 	}
 
