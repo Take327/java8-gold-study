@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -90,7 +91,34 @@ public class Main {
 		set3.add(new Employee(1, "BBB"));
 		set3.add(new Employee(2, "CCC"));
 		System.out.println(set3);
+		System.out.println("-------------------------------");
+		Stream<String> streamB = Stream.of("banana", "apple", "orange").filter(e -> e.length() > 5)
+				.peek(System.out::print).map(String::toUpperCase).peek(System.out::print);
 
+		System.out.print("OK ");
+		streamB.count();
+		System.out.println("-------------------------------");
+		List<Integer> arrayC = Arrays.asList(10, 10, 15);
+		System.out.println(arrayC.stream().allMatch(e -> e == 1));
+		System.out.println("-------------------------------");
+		List<List<String>> list = Arrays.asList(Arrays.asList("Java", "Oracle"), Arrays.asList("Lambda", "Java"));
+		System.out.println(list);
+		list.stream().flatMap(l ->{
+			System.out.println(l);
+			return l.stream();
+		}).distinct().forEach(System.out::println);
+		
+		System.out.println("-------------------------------");
+		Map<String,String> mapA = new HashMap<>();
+		mapA.put("A","B");
+		mapA.merge("A", "B", (v1,v2)->v1.concat(v2));
+		System.out.println(mapA);
+		mapA.merge("B", "C", (v1,v2)->v1.concat(v2));
+		System.out.println(mapA);
+
+		
+		
+		
 	}
 
 }
