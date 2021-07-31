@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -115,6 +116,13 @@ public class Main {
 		System.out.println(mapA);
 		mapA.merge("B", "C", (v1,v2)->v1.concat(v2));
 		System.out.println(mapA);
+		
+		System.out.println("-------------------------------");
+		Double total = Arrays.asList(new Book("A",25.20),new Book("B",22.98),new Book("C",16.77))
+				.stream().collect(Collectors.summingDouble(e->e.getPrice()));
+		
+		System.out.println(total);
+
 
 		
 		
