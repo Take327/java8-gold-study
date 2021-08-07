@@ -23,18 +23,23 @@ public class Main {
 		//Files.createDirectory(dirPath);
 		
 		try(BufferedReader in = new BufferedReader(new FileReader(path.toString()))){
-			//System.out.println(in.readLine());
+			
 			//System.out.println((char)in.read());
 			
-			in.skip(1);
-			System.out.println((char)in.read());
-
-			in.skip(1);
-			System.out.println((char)in.read());
+			in.mark(1);//8196バイトを越えないと意味がない
 			
-			in.mark(3);
+			
+			in.skip(3);
+			System.out.println((char)in.read());
+			System.out.println((char)in.read());
+			System.out.println((char)in.read());
 			System.out.println((char)in.read());
 
+			
+			System.out.println(in.readLine());
+			
+			in.reset();
+			System.out.println(in.readLine());
 		
 		}catch (IOException e) {
 			// TODO: handle exception
