@@ -1,8 +1,9 @@
 package chapter7.path;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -19,7 +20,25 @@ public class Main {
 		System.out.println(FileSystems.getDefault());
 		
 		Path dirPath = Path.of("/Users/takeshi/work/java学習用/java8-gold-study/public/test");
-		Files.createDirectory(dirPath);
+		//Files.createDirectory(dirPath);
+		
+		try(BufferedReader in = new BufferedReader(new FileReader(path.toString()))){
+			//System.out.println(in.readLine());
+			//System.out.println((char)in.read());
+			
+			in.skip(1);
+			System.out.println((char)in.read());
+
+			in.skip(1);
+			System.out.println((char)in.read());
+			
+			in.mark(3);
+			System.out.println((char)in.read());
+
+		
+		}catch (IOException e) {
+			// TODO: handle exception
+		}
 
 	}
 }
