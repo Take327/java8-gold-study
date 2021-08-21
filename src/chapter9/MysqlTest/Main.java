@@ -28,6 +28,7 @@ public class Main {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root", "root");
 			// SQL実行準備
 			st = con.createStatement();
+			
 			// 実行結果取得
 			rs = st.executeQuery(sql);
 			System.out.println(rs);
