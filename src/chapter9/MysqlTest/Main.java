@@ -2,10 +2,11 @@ package chapter9.MysqlTest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -15,11 +16,15 @@ public class Main {
 		Connection con = null;
 		//
 		Statement st = null;
-		PreparedStatement stmt = null;
+		// PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		// SQL文の作成
 		String sql = "SELECT" + " * " + "FROM test";
+
+		List<String> list = Arrays.asList("うどん", "カツ丼", "ラーメン");
+		list.stream().map(str -> "INSERT INTO test VALUES('001','" + str + "');")
+				.forEach(str -> System.out.println(str));
 
 		try {
 			// JDBCドライバのロード
@@ -30,7 +35,8 @@ public class Main {
 			st = con.createStatement();
 			// 実行結果取得
 			rs = st.executeQuery(sql);
-			System.out.println(rs);
+			rs.next();
+			System.out.println(rs.getString(2));
 
 			// データがなくなるまで(rs.next()がfalseになるまで)繰り返す
 			while (rs.next()) {
@@ -39,6 +45,8 @@ public class Main {
 
 				System.out.println(id + ":" + name);
 			}
+			
+			
 			// } catch (ClassNotFoundException e) {
 			// e.printStackTrace();
 			// System.out.println("JDBCドライバのロードでエラーが発生しました");
