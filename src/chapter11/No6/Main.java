@@ -12,7 +12,8 @@ public class Main {
 		for (int i = 0; i < brics.length; i++) {
 			System.out.println(brics[i]);
 		}
-
+		
+		//Arraysにはstream()はない　asList()でList型にしてから使用する。
 		Arrays.asList(brics).stream().forEach(e -> System.out.println(e));
 
 		// @formatter:on
